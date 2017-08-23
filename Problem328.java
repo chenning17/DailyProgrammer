@@ -1,7 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* This problem concerns checking to see if a given array is a latin square.
+ * input will be a value for n (the square dimension) follwed by a single line string of numbers
+ * problem is to see if given input forms a latin square (a square matrix of numbers
+ * where on each line and column there are the numbers 1->n with no repeats)
+ * link to problem: https://www.reddit.com/r/dailyprogrammer/comments/6v29zk/170821_challenge_328_easy_latin_squares/
  */
 package dailyprogrammer;
 
@@ -51,7 +52,6 @@ public class Problem328 {
 //            System.out.printf("%d ", values[k]);
 //        }
 //        System.out.printf("\n");
-        
         for (int i = 0; i < values.length - 1; i++) {
             //now values have been sorted should be difference of 1 between each adjacent number
             if (values[i + 1] - values[i] != 1) {
@@ -63,6 +63,7 @@ public class Problem328 {
         return latin;
     }
 
+    //function to sort elements in an array into order of increasing value
     private static void bubbleSort(int[] array) {
         int temp;
 
@@ -70,7 +71,7 @@ public class Problem328 {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length - 1; j++) {
 
-                if (array[j+1] < array[j]) {
+                if (array[j + 1] < array[j]) {
                     temp = array[j + 1];
                     array[j + 1] = array[j];
                     array[j] = temp;
@@ -80,20 +81,11 @@ public class Problem328 {
         }
     }
 
-
-public static void solve(String[] args) throws IOException {
-        /* This problem concerns checking to see if a given array is a latin square.
-         * input will be a value for n (the square dimension) follwed by a single line string of numbers
-         * problem is to see if given input forms a latin square (a square matrix of numbers
-         * where on each line and column there are the numbers 1->n with no repeats)
-         * link to problem: https://www.reddit.com/r/dailyprogrammer/comments/6v29zk/170821_challenge_328_easy_latin_squares/
-         */
+    public static void main(String[] args) throws IOException {
 
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-        String inputString = input.readLine();
+        //String inputString = input.readLine();
 
-//        // create a scanner so we can read the command-line input
-//        Scanner scanner = new Scanner(System.in);
         //  prompt for square dimension, n.
         System.out.print("input value for n, the square dimension: ");
         int n = Integer.parseInt(input.readLine());
@@ -122,17 +114,13 @@ public static void solve(String[] args) throws IOException {
          * need to try and check if it is a latin square or not.
          */
         int result = isLatin(array);
-        
-        if(result == 1){
-        System.out.printf("is latin square? => true\n");
-        }
-        else{
+
+        if (result == 1) {
+            System.out.printf("is latin square? => true\n");
+        } else {
             System.out.printf("is latin square? => false\n");
         }
-        
-//        System.out.printf("n is %d\n", n);
-//         for(int i = 0; i< array.length; i++){
-//            System.out.printf("%d\n", array[i][0]);
-//        }
+
+        System.exit(0);
     }
 }
